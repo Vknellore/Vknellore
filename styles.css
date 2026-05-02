@@ -1,0 +1,13 @@
+:root{--bg:#060b16;--card:#0f172a;--text:#e6edf7;--muted:#9db0ca;--line:#1e2d47;--brand:#7dd3fc;--brand2:#22c55e}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at top,#0b1630,#060b16 50%);color:var(--text);line-height:1.6}
+.container{width:min(1120px,92%);margin:auto}.site-header{position:sticky;top:0;background:rgba(6,11,22,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 0}.logo{font-weight:700;color:#fff;text-decoration:none}.logo-mark{color:var(--brand)}
+nav{display:flex;gap:.9rem;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none}.hero{padding:4rem 0 3rem}.hero-layout{display:grid;grid-template-columns:1.45fr 1fr;gap:1rem}
+.eyebrow{font-size:.78rem;letter-spacing:.1em;color:var(--brand)}h1,h2,h3{line-height:1.2;margin:.2rem 0 .7rem}.lead{color:#c8d8ec;font-size:1.08rem}
+.hero-panel,.card,.deal-box{background:linear-gradient(180deg,#0f172a,#0b1222);border:1px solid var(--line);border-radius:14px;padding:1rem}
+.three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.section{padding:2.5rem 0}.section-alt{background:#070f1f}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem}
+.steps div{background:#0e1a30;border:1px solid var(--line);border-radius:10px;padding:.75rem;text-align:center}.steps span{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:99px;background:var(--brand);color:#082f49;font-weight:700}
+.btn{display:inline-block;text-decoration:none;padding:.72rem 1rem;border-radius:10px;font-weight:700}.btn-primary{background:linear-gradient(90deg,var(--brand2),#4ade80);color:#04210f}.btn-secondary{color:var(--brand);border:1px solid #2f5f87}
+.text-link{color:var(--brand);text-decoration:none}.cta-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}.mini-proof{font-size:.9rem;color:var(--muted)}
+ul{padding-left:1.1rem}.hide-mobile{display:inline-block}
+@media (max-width:960px){.hero-layout,.three-cols,.steps{grid-template-columns:1fr}.hide-mobile{display:none}}
