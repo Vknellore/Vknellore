@@ -756,6 +756,9 @@
     <section class="hero">
      <h1>Build Wealth in UK Property — Without Lifting a Finger</h1>
      <p>Remote portfolio building, fully managed deals, and co-investment opportunities</p><button class="btn btn-primary" onclick="showPage('offers')">Explore Our Offers</button>
+     <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Beautiful house exterior in a residential area" loading="lazy">
+     </div>
     </section>
    </div>
    <section style="background: #f9fafb;">
@@ -821,7 +824,7 @@
   <div id="bookingModal" class="modal">
    <div class="modal-content"><button class="modal-close" onclick="closeBookingModal()">✕</button>
     <h2>Schedule Your Free Consultation</h2>
-    <form id="bookingForm" onsubmit="handleBookingSubmit(event)">
+    <form id="bookingForm" action="https://formspree.io/f/mqenanop" method="POST" onsubmit="handleBookingSubmit(event)">
      <div class="form-group"><label for="name">Full Name</label> <input type="text" id="name" name="name" required>
      </div>
      <div class="form-group"><label for="email">Email Address</label> <input type="email" id="email" name="email" required>
@@ -862,14 +865,38 @@
       document.getElementById('bookingForm').reset();
     }
 
-    function handleBookingSubmit(event) {
+    async function handleBookingSubmit(event) {
       event.preventDefault();
-      closeBookingModal();
-      const toast = document.getElementById('successToast');
-      toast.classList.add('active');
-      setTimeout(() => {
-        toast.classList.remove('active');
-      }, 4000);
+      const form = document.getElementById('bookingForm');
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const toast = document.getElementById('successToast');
+        if (response.ok) {
+          closeBookingModal();
+          toast.textContent = "✓ Consultation booked! We'll be in touch within 24 hours.";
+          toast.style.background = '#22c55e';
+        } else {
+          toast.textContent = '⚠️ Something went wrong. Please try again.';
+          toast.style.background = '#f97316';
+        }
+        toast.classList.add('active');
+        setTimeout(() => toast.classList.remove('active'), 4000);
+      } catch (error) {
+        const toast = document.getElementById('successToast');
+        toast.textContent = '⚠️ Network error. Please try again later.';
+        toast.style.background = '#ef4444';
+        toast.classList.add('active');
+        setTimeout(() => toast.classList.remove('active'), 4000);
+      }
     }
 
     document.addEventListener('click', function(event) {
