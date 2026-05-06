@@ -7,27 +7,30 @@ document.querySelectorAll('[data-year]').forEach((el) => {
   el.textContent = new Date().getFullYear();
 });
 
-const bookingForm = document.getElementById('bookingForm');
-const bookingStatus = document.getElementById('bookingStatus');
-if (bookingForm && bookingStatus) {
-  bookingForm.addEventListener('submit', async (event) => {
+document.querySelectorAll('.formspree-form').forEach((form) => {
+  const statusEl = form.querySelector('.booking-status');
+  if (!statusEl) return;
+
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
-    bookingStatus.textContent = 'Sending...';
-    const formData = new FormData(bookingForm);
+    statusEl.textContent = 'Sending...';
+    const formData = new FormData(form);
+
     try {
-      const response = await fetch(bookingForm.action, {
+      const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
         headers: { Accept: 'application/json' }
       });
+
       if (response.ok) {
-        bookingStatus.textContent = 'Thank you! Your booking request has been sent successfully.';
-        bookingForm.reset();
+        statusEl.textContent = 'Thank you! Your request has been sent successfully.';
+        form.reset();
       } else {
-        bookingStatus.textContent = 'Something went wrong. Please try again.';
+        statusEl.textContent = 'Something went wrong. Please try again.';
       }
     } catch {
-      bookingStatus.textContent = 'Network error. Please try again in a moment.';
+      statusEl.textContent = 'Network error. Please try again in a moment.';
     }
   });
-}
+});
