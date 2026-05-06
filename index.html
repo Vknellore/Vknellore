@@ -1,45 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UK Property Wealth | Premium Property Investment</title>
-  <meta name="description" content="Build wealth in UK property with fully managed, investor-first opportunities." />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        /* Features/Services Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        #about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #667eea;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="site-header"><div class="container nav-row"><a class="logo" href="index.html">UK Property Wealth</a><button class="menu-btn" aria-label="Menu">☰</button><nav class="main-nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="offers.html">Services</a><a href="contact.html">Contact</a></nav></div></header>
-  <main>
-    <section class="hero"><div class="container hero-grid"><div><p class="eyebrow">Remote UK Real Estate Investing</p><h1>Build Wealth in UK Property — Without Lifting a Finger</h1><p class="lead">We source, structure, and manage high-quality UK property opportunities so you can invest confidently from anywhere.</p><div class="cta-row"><a class="btn btn-primary" href="#book-call">Book a Call</a><a class="btn btn-secondary" href="offers.html">Explore Services</a></div></div><img class="banner" src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1400&q=75" alt="Premium modern residential property exterior" loading="eager"></div></section>
-    <section class="section section-white"><div class="container"><h2>Services Overview</h2><div class="grid-3"><article class="card"><h3><span class="inline-icon">⌂</span>Portfolio Building</h3><p>Done-for-you sourcing, acquisition, and management for long-term wealth creation.</p></article><article class="card"><h3><span class="inline-icon">📈</span>Vetted Deals</h3><p>Income-generating opportunities with transparent underwriting and risk notes.</p></article><article class="card"><h3><span class="inline-icon">🏗</span>Co-Invest Projects</h3><p>Access development deals alongside experienced project partners.</p></article></div></div></section>
-    <section class="section"><div class="container"><h2>About UK Property Wealth</h2><p>We support busy professionals and global investors with a disciplined, data-led investment process built for sustainable returns.</p><a class="btn btn-secondary" href="about.html">Read Our Story</a></div></section>
-    <section class="section section-white"><div class="container"><h2>Trusted by Serious Investors</h2><div class="grid-3"><article class="card"><p>“Clear numbers and consistent communication. Exactly what investors need.”</p><strong>— Investor, London</strong></article><article class="card"><p>“Professional process from sourcing through management.”</p><strong>— Investor, Dubai</strong></article><article class="card"><p>“The team helped me invest remotely with confidence.”</p><strong>— Investor, Manchester</strong></article></div></div></section>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">YourBrand</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section class="section section-white" id="book-call">
-      <div class="container booking-wrap">
-        <h2>Book a Call</h2>
-        <p class="booking-lead">Tell us your goals and we will contact you to schedule your strategy call.</p>
-        <form class="booking-form" action="https://formspree.io/f/mqenanop" method="POST" id="bookingForm">
-          <input type="hidden" name="_subject" value="New Booking Request from Website" />
-          <label>Name*
-            <input type="text" name="name" required />
-          </label>
-          <label>Email*
-            <input type="email" name="email" required />
-          </label>
-          <label>Phone
-            <input type="tel" name="phone" />
-          </label>
-          <label>Message*
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-          <button class="btn btn-primary" type="submit">Send Booking Request</button>
-          <p id="bookingStatus" class="booking-status" aria-live="polite"></p>
-        </form>
-      </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to Your Professional Platform</h1>
+            <p>Discover innovative solutions and exceptional services tailored for your success</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
     </section>
-  </main>
-  <footer class="site-footer"><div class="container footer-grid"><div><strong>UK Property Wealth</strong><p>Email: hello@ukpropertywealth.com<br/>Phone: +44 20 0000 0000</p></div><nav class="footer-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="offers.html">Services</a><a href="contact.html">Contact</a></nav></div><p class="footer-note">© <span data-year></span> UK Property Wealth. All rights reserved.</p></footer>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Fast & Reliable</h3>
+                <p>Experience lightning-fast performance and 99.9% uptime reliability for your business needs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Protected</h3>
+                <p>Enterprise-grade security measures to keep your data safe and protected at all times.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3>Innovative Solutions</h3>
+                <p>Cutting-edge technology and creative strategies to help your business grow and succeed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Who We Are</h3>
+                <p>We are a team of passionate professionals dedicated to delivering exceptional results. With years of experience and a commitment to excellence, we help businesses achieve their goals.</p>
+                <p style="margin-top: 1rem;">Our mission is to provide innovative solutions that empower organizations to thrive in a digital world.</p>
+            </div>
+            <div class="placeholder-image">
+                📊 [Image Placeholder]
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Your Brand. All rights reserved.</p>
+        <p>Professional Portfolio & Services</p>
+        <div class="social-links">
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+        </div>
+    </footer>
 </body>
 </html>
